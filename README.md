@@ -1,6 +1,8 @@
-# PruebaSsr
+# PruebaSsr [![Netlify Status](https://api.netlify.com/api/v1/badges/1c2dcb27-9f7d-48cb-a799-fbfdc51fac04/deploy-status)](https://app.netlify.com/sites/imssb-ssr/deploys)
 
+Proyecto de prueba de Server Side Rendering
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.3.
+
 
 ## Development server
 
