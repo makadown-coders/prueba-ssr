@@ -1,18 +1,16 @@
 <h1 class="text-3xl font-bold">Listado de medicamentos</h1>
 
-<h2 class="text-xl">Página actual</h2>
+<h2 class="text-xl">Página actual: {{ this.currentPage() }}</h2>
 
 <hr class="my-2">
 
-
-    <app-insumo-list [medicamentos]="medicamentos()"></app-insumo-list>
-
-    <!--<app-insumo-list-skeleton></app-insumo-list-skeleton>-->
-
-
-<!-- TODO: buttons Cargar siguiente y anteriores -->
+@if(this.medicamentos().length > 0) {
+<app-insumo-list [medicamentos]="medicamentos()"></app-insumo-list>
+} @else {
+<app-insumo-list-skeleton></app-insumo-list-skeleton>
+}
 
 <div class="flex justify-between">
-    <button class="mt-2">Anteriores</button>
-    <button class="mt-2">Siguientes</button>
+    <button (click)="cargarMedicamentos(-1)" class="mt-2 cursor-pointer">Anteriores</button>
+    <button (click)="cargarMedicamentos(+1)" class="mt-2 cursor-pointer">Siguientes</button>
 </div>

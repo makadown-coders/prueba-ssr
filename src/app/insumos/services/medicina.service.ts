@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { map, Observable, tap } from 'rxjs'; 
 import { MedicamentoApiResponse, SimpleMedicamento } from '../interfaces';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicinaService {
   private http = inject(HttpClient);
+  private baseUrl = environment.apiUrl;
 
   constructor() { }
 
@@ -18,7 +20,7 @@ export class MedicinaService {
 
     page = Math.max(0, page);
 
-    return this.http.get<MedicamentoApiResponse>(`https://creepy-valerie-imssb-7706b603.koyeb.app/medicamentos?offset=${page*20}&limit=20`)
+    return this.http.get<MedicamentoApiResponse>(`${this.baseUrl}/medicamentos?offset=${page*20}&limit=20`)
              .pipe(
                 map(response => {
                   const simpleMedicamentos: SimpleMedicamento[] = response.results.map(medicamento => ({
