@@ -1,8 +1,8 @@
 <div class="grid grid-cols-1 sm:grid-cols3 gap-3 md:grid-cols-5">
     <!-- 12 -->
     <!--------- InsumoCard -------->
-    @for (insumo of '123456789012'.split(''); track $index) {
-        <app-insumo-card></app-insumo-card>
+    @for (insumo of medicamentos(); track $index) {
+        <app-insumo-card [medicamento]="insumo"></app-insumo-card>
     }
     <!-- Si no hay (*ngIf="insumos.length === 0") -->
 

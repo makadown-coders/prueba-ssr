@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { InsumoCardComponent } from '../insumo-card/insumo-card.component';
+import { SimpleMedicamento } from '../../interfaces';
 
 @Component({
   selector: 'app-insumo-list',
@@ -8,4 +9,7 @@ import { InsumoCardComponent } from '../insumo-card/insumo-card.component';
   templateUrl: './insumo-list.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InsumoListComponent { }
+export class InsumoListComponent { 
+  public medicamentos = input.required<SimpleMedicamento[]>();
+
+}
