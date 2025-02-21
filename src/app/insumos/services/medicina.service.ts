@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { map, Observable, tap } from 'rxjs'; 
+import { inject, Injectable, signal } from '@angular/core';
+import { BehaviorSubject, map, Observable, tap } from 'rxjs'; 
 import { MedicamentoApiResponse, SimpleMedicamento } from '../interfaces';
 import { environment } from '../../../environments/environment';
 
@@ -10,6 +10,11 @@ import { environment } from '../../../environments/environment';
 export class MedicinaService {
   private http = inject(HttpClient);
   private baseUrl = environment.apiUrl;
+
+  // Create behavior subject to store the simpleMedicamentos array
+  private _simpleMedicamentos$ = new BehaviorSubject<SimpleMedicamento[]>([]);
+  public simpleMedicamentos$ = this._simpleMedicamentos$.asObservable();
+  
 
   constructor() { }
 
@@ -41,10 +46,15 @@ export class MedicinaService {
                     contraindicacionesPrecauciones: medicamento.contraindicacionesPrecauciones,
                     interacciones: medicamento.interacciones
                   }));
+                  this._simpleMedicamentos$.next(simpleMedicamentos);
                   return simpleMedicamentos;
                 }),
                 
              );
+  }
+
+  public loadMedicamento(id: number): Observable<SimpleMedicamento> {
+    return this.http.get<SimpleMedicamento>(`${this.baseUrl}/medicamentos/${id}`);
   }
 
 }

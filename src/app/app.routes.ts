@@ -6,6 +6,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/insumos/insumos-page.component')
     },
     {
+        path: 'insumos/:id',
+        loadComponent: () => import('./pages/insumo/insumo-page.component')
+    },
+    {
         path: 'about',
         loadComponent: () => import('./pages/about/about-page.component')
     },

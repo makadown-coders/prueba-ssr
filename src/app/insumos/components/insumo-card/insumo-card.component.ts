@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, effect, input } from '@angular/core';
 import { SimpleMedicamento } from '../../interfaces';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-insumo-card',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './insumo-card.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
