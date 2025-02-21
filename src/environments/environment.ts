@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:3000'
+  production: true,
+  apiUrl: 'https://creepy-valerie-imssb-7706b603.koyeb.app'
   };
   
